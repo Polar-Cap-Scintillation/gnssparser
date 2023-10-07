@@ -1,0 +1,22 @@
+[project]
+name = "gnssparser"
+version = "0.0.1"
+authors = [
+  { name="Leslie Lamarche", email="leslie.lamarche@sri.com" },
+]
+description = "Parser for reading in raw binary datafiles from GNSS receivers."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Polar-Cap-Scintillation/gnssparser"
+"Bug Tracker" = "https://github.com/Polar-Cap-Scintillation/gnssparser/issues"
