@@ -204,7 +204,7 @@ def read_file(filename):
     #Icorr = np.array(Icorr)
     #Qcorr = np.array(Qcorr)
     #carrier_phase = np.array(carrier_phase)
-    #carrier_phase_ME = np.array(carrier_phase_ME)
+    carrier_phase_ME = np.array(carrier_phase_ME)
 
     #for i in range(len(tstmp_tow_ME)):
     #    carrier_phase[i*100:(i+1)*100,:,:] = np.unwrap(carrier_phase[i*100:(i+1)*100,:,:], axis=0, period=65.536) + carrier_phase_ME[i,:,:]
@@ -218,7 +218,10 @@ def read_file(filename):
 
     for prn in range(32):
         for st, sig_info in signal_type.items():
-            phase[prn][sig_info['name']] = np.unwrap(phase[prn][sig_info['name']], period=65.536)
+            #phase[prn][sig_info['name']] = np.unwrap(phase[prn][sig_info['name']], period=65.536)
+            for i in range(len(carrier_phase_ME)):
+                phase[prn][sig_info['name']][i*100:(i+1)*100] = np.unwrap(phase[prn][sig_info['name']][i*100:(i+1)*100], period=65.536) + carrier_phase_ME[i,prn,st]
+
 
     #tstmp = gps2utc(tstmp_wnc, tstmp_tow)
 
