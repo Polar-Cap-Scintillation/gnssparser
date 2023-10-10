@@ -1,7 +1,7 @@
 # utils.py
 # Shared utility functions
 
-import spacepy.time as spt
+# import spacepy.time as spt
 import numpy as np
 
 
