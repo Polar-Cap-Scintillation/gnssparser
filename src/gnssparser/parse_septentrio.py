@@ -177,7 +177,7 @@ def read_file(filename):
     
                 # organize output from block
                 tstmp_wnc.append(wnc)
-                tstmp_tow.append(tow)
+                tstmp_tow.append(tow/1000.)
 
                 for prn in range(32):
                     for st, sig_info in signal_type.items():
@@ -188,7 +188,7 @@ def read_file(filename):
             elif block_id == 4027:
                 tow, wnc, cp = read4027(f)
                 tstmp_wnc_ME.append(wnc)
-                tstmp_tow_ME.append(tow)
+                tstmp_tow_ME.append(tow/1000.)
                 carrier_phase_ME.append(cp)
     
             else:
