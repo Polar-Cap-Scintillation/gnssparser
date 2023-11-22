@@ -67,7 +67,7 @@ def read4027(f):
         lam = 299792458/signal_type[typ]['freq']
 
         carrier_phase = pseudorange/lam + (carrierMSB*65536+carrierLSB)*0.001
-        CarrierPhase[svid,typ] = carrier_phase
+        CarrierPhase[svid-1,typ] = carrier_phase
 
         # CN0
         data = f.read(1)
@@ -104,7 +104,7 @@ def read4027(f):
             alpha = signal_type[typ2]['freq']/signal_type[typ]['freq']
             doppler2 = doppler*alpha + (DopplerOffsetMSB*65536+doppleroffsetLSB)*1e-4
 
-            CarrierPhase[svid,typ2] = carrier_phase2
+            CarrierPhase[svid-1,typ2] = carrier_phase2
 
     return tow, wnc, CarrierPhase
 
@@ -139,9 +139,9 @@ def read4046(fp):
       CorrI_MSB = twos_comp((CorrIQ_MSB & 0xF), 4)
       CorrQ_MSB = twos_comp((CorrIQ_MSB & 0xF0) >> 4, 4)
 
-      Icorr[svid,typ] = CorrI_MSB*256 + CorrI_LSB
-      Qcorr[svid,typ] = CorrQ_MSB*256 + CorrQ_LSB
-      CarrierPhase[svid,typ] = CarrierPhaseLSB*0.001
+      Icorr[svid-1,typ] = CorrI_MSB*256 + CorrI_LSB
+      Qcorr[svid-1,typ] = CorrQ_MSB*256 + CorrQ_LSB
+      CarrierPhase[svid-1,typ] = CarrierPhaseLSB*0.001
 
     return tow, wnc, Icorr, Qcorr, CarrierPhase
 
